@@ -210,7 +210,7 @@
                         <li class="nav-item">
                             <a href="{{ route('ulangan.index') }}" class="nav-link" id="UlanganGuru">
                                 <i class="fas fa-file-alt nav-icon"></i>
-                                <p>Entry Nilai Ulangan</p>
+                                <p>Input Nilai Ulangan</p>
                             </a>
                         </li>
                         @if (
@@ -220,7 +220,7 @@
                         <li class="nav-item">
                             <a href="{{ route('sikap.index') }}" class="nav-link" id="SikapGuru">
                                 <i class="fas fa-file-alt nav-icon"></i>
-                                <p>Entry Nilai Sikap</p>
+                                <p>Input Nilai Sikap</p>
                             </a>
                         </li>
                         @else
@@ -228,7 +228,7 @@
                         <li class="nav-item">
                             <a href="{{ route('rapot.index') }}" class="nav-link" id="RapotGuru">
                                 <i class="fas fa-file-alt nav-icon"></i>
-                                <p>Entry Nilai Rapot</p>
+                                <p>Input Nilai Rapot</p>
                             </a>
                         </li>
                         <li class="nav-item">
