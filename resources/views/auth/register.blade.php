@@ -2,7 +2,7 @@
 @section('page', 'Register Authentication')
 @section('content')
 <div class="card-body login-card-body">
-  <p class="login-box-msg">Register a new membership</p>
+  <p class="login-box-msg">Register new account</p>
 
   <form action="{{ route('register') }}" method="post">
     @csrf
@@ -14,9 +14,9 @@
         </div>
       </div>
       @error('email')
-        <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
       @enderror
     </div>
     <div class="input-group mb-3">
@@ -31,9 +31,9 @@
         </div>
       </div>
       @error('role')
-        <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
       @enderror
       <div id="pesan"></div>
     </div>
@@ -47,9 +47,9 @@
         </div>
       </div>
       @error('password')
-        <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
       @enderror
     </div>
     <div class="input-group mb-3">
@@ -60,14 +60,14 @@
         </div>
       </div>
       @error('password')
-        <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
       @enderror
     </div>
     <div class="row mb-3">
       <div class="col-6">
-        <a href="{{ route('login') }}" class="text-center btn btn-light text-blue">Login Saja</a>
+        <a href="{{ route('login') }}" class="text-center btn btn-light text-blue">Login</a>
       </div>
       <!-- /.col -->
       <div class="col-6 justify-content-end">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\RapotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,11 @@ Route::get('/clear-cache', function () {
   Artisan::call('config:cache');
   return 'DONE';
 });
+
+Route::get('/export.pdf', 'RapotController@exportPDF')->name('export.pdf');
+
+
+
 
 Auth::routes();
 Route::get('/login/cek_email/json', 'UserController@cek_email');

@@ -2,7 +2,7 @@
 @section('page', 'Reset Password')
 @section('content')
 <div class="card-body login-card-body">
-  <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
+  <p class="login-box-msg">Enter your email address and we will send you a link to reset your password</p>
 
   <form action="{{ route('cek-email') }}" method="post">
     @csrf
@@ -14,25 +14,25 @@
         </div>
       </div>
       @error('email')
-        <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
+      <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
       @enderror
     </div>
     <div class="row mb-3">
       <div class="col-12">
-        <button type="submit" class="btn btn-primary btn-block">{{ __('Send Password Reset Link') }}</button>
+        <button type="submit" class="btn btn-primary btn-block">{{ __('Reset Password') }}</button>
       </div>
       <!-- /.col -->
     </div>
-    
+
     <div class="row">
       <div class="col-6">
-        <a href="{{ route('login') }}" class="text-center btn-block btn btn-light text-blue">Login Saja</a>
+        <a href="{{ route('login') }}" class="text-center btn-block btn btn-light text-blue">Login</a>
       </div>
       <!-- /.col -->
       <div class="col-6">
-        <a href="{{ route('register') }}" class="text-center btn-block btn btn-light text-blue">Buat Akun</a>
+        <a href="{{ route('register') }}" class="text-center btn-block btn btn-light text-blue">Create Account</a>
       </div>
       <!-- /.col -->
     </div>

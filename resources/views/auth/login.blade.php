@@ -3,7 +3,7 @@
 @section('content')
 <div class="card-body login-card-body">
 
-  <p class="login-box-msg text-md">Login</p>
+  <p class="login-box-msg text-md">SMPN 1 Kedungjati</p>
   <img class=" mx-auto d-block mb-4" src="{{ asset('img/logo.jpg') }}" alt="SMPN 1 Kedungjati" style="width: 200px;">
 
   <form action="{{ route('login') }}" method="post">

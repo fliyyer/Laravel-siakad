@@ -13,6 +13,7 @@ use App\Jadwal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use PDF;
 
 class RapotController extends Controller
 {
@@ -177,5 +178,39 @@ class RapotController extends Controller
         $jadwal = Jadwal::where('kelas_id', $kelas->id)->orderBy('mapel_id')->get();
         $mapel = $jadwal->groupBy('mapel_id');
         return view('siswa.rapot', compact('siswa', 'kelas', 'mapel', 'Spai', 'Sppkn'));
+    }
+
+    public function exportPDF()
+    {
+        // Pindahkan bagian decrypt ke sini jika diperlukan
+        try {
+            $decryptedId = Crypt::decrypt(request()->id);
+            dd($decryptedId);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            dd($e->getMessage());
+        }
+
+        // Lanjutkan dengan logika PDF jika ID valid
+        $siswa = Siswa::findorfail($decryptedId);
+        $kelas = Kelas::findorfail($siswa->kelas_id);
+        $pai = Mapel::where('nama_mapel', 'Pendidikan Agama dan Budi Pekerti')->first();
+        $ppkn = Mapel::where('nama_mapel', 'Pendidikan Pancasila dan Kewarganegaraan')->first();
+
+        if ($pai != null && $ppkn != null) {
+            $Spai = Sikap::where('siswa_id', $siswa->id)->where('mapel_id', $pai->id)->first();
+            $Sppkn = Sikap::where('siswa_id', $siswa->id)->where('mapel_id', $ppkn->id)->first();
+        } else {
+            $Spai = null;
+            $Sppkn = null;
+        }
+
+        $jadwal = Jadwal::where('kelas_id', $kelas->id)->orderBy('mapel_id')->get();
+        $mapel = $jadwal->groupBy('mapel_id');
+
+        $data = compact('siswa', 'kelas', 'mapel', 'Spai', 'Sppkn');
+
+        $pdf = PDF::loadView('siswa.rapot_pdf', $data);
+
+        return $pdf->download('rapot_siswa.pdf');
     }
 }

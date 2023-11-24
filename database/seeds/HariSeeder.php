@@ -12,35 +12,25 @@ class HariSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('hari')->insert([
-            'id' => 1,
-            'nama_hari' => 'Senin',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('hari')->insert([
-            'id' => 2,
-            'nama_hari' => 'Selasa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('hari')->insert([
-            'id' => 3,
-            'nama_hari' => 'Rabu',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('hari')->insert([
-            'id' => 4,
-            'nama_hari' => 'Kamis',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
-        DB::table('hari')->insert([
-            'id' => 5,
-            'nama_hari' => "Jum'at",
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ]);
+        $now = now();
+
+        $days = [
+            ['id' => 1, 'nama_hari' => 'Senin'],
+            ['id' => 2, 'nama_hari' => 'Selasa'],
+            ['id' => 3, 'nama_hari' => 'Rabu'],
+            ['id' => 4, 'nama_hari' => 'Kamis'],
+            ['id' => 5, 'nama_hari' => "Jum'at"],
+        ];
+
+        foreach ($days as $day) {
+            DB::table('hari')->updateOrInsert(
+                ['id' => $day['id']],
+                [
+                    'nama_hari' => $day['nama_hari'],
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ]
+            );
+        }
     }
 }
